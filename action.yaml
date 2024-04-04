@@ -13,8 +13,8 @@ inputs:
   key_id:
     description: "Key Id."
     required: true
-  key:
-    description: "P8 Private Key."
+  base64_encoded_key:
+    description: "Base64 encoded P8 private key."
     required: true
 
 outputs:

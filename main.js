@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const core = require('@actions/core');
 
-
 const issuerId = core.getInput("issuer_id");
 const payload = {
     iss: issuerId,
@@ -10,7 +9,9 @@ const payload = {
     exp: Math.floor(Date.now() / 1000) + 20 * 60,
 }
 
-const key = core.getInput("key");
+const base64EncodedKey = core.getInput("base64_encoded_key");
+const key = btoa(base64EncodedKey);
+
 const keyId = core.getInput("key_id");
 const signedToken = jwt.sign(
     payload,
