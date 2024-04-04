@@ -1,0 +1,26 @@
+name: "App Store Connect API JWT"
+description: "Creates a JWT token for the App Store Connect API."
+author: "matheus_kirchesch"
+
+branding:
+  icon: "unlock"
+  color: "green"
+
+inputs:
+  issuer_id:
+    description: "Issuer UUID."
+    required: true
+  key_id:
+    description: "Key Id."
+    required: true
+  key:
+    description: "P8 Private Key."
+    required: true
+
+outputs:
+  token:
+    description: "App Store Connect API created JWT."
+
+runs:
+  using: "node20"
+  main: "main.js"
