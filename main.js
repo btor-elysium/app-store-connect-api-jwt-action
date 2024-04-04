@@ -5,12 +5,12 @@ const issuerId = core.getInput("issuer_id");
 const payload = {
     iss: issuerId,
     aud: 'appstoreconnect-v1',
-    iat: Date.now(),
+    iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 20 * 60,
 }
 
 const base64EncodedKey = core.getInput("base64_encoded_key");
-const key = btoa(base64EncodedKey);
+const key = Buffer.from(base64EncodedKey, "base64").toString();
 
 const keyId = core.getInput("key_id");
 const signedToken = jwt.sign(
